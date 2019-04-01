@@ -20,7 +20,7 @@ public class Artikal {
 
     public static ArrayList<Artikal> izbaciDuplikate(ArrayList<Artikal> lista) {
         for (int i=0; i < lista.size(); i++) {
-            for (int j=0; j < lista.size(); j++) {
+            for (int j=i+1; j < lista.size(); j++) {
                 if(lista.get(i).equals(lista.get(j)))
                     lista.remove(j);
             }
