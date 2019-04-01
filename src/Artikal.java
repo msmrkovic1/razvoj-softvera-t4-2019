@@ -19,7 +19,7 @@ public class Artikal {
     }
 
     public void setSifra(String sifra) {
-
+        if(sifra.isEmpty()) throw IllegalArgumentException("Nije unesena sifra!");
         this.sifra = sifra;
     }
 
@@ -28,6 +28,7 @@ public class Artikal {
     }
 
     public void setNaziv(String naziv) {
+        if(naziv.isEmpty()) throw IllegalArgumentException("Prazan naziv!");
         this.naziv = naziv;
     }
 
@@ -36,11 +37,12 @@ public class Artikal {
     }
 
     public void setCijena(String cijena) {
+        if(cijena<=0) throw IllegalArgumentException("Cijena mora biti veca od 0");
         this.cijena = cijena;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return sifra + "," + naziv + "," + cijena;
     }
 }
