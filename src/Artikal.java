@@ -1,17 +1,20 @@
 package sample;
 
+import java.util.ArrayList;
+
 public class Artikal {
     private String sifra;
     private String naziv;
-    private String cijena;
+    private double cijena;
 
     public Artikal() {
     }
 
-    public Artikal(String sifra, String naziv, String cijena) {
-        this.sifra = sifra;
-        this.naziv = naziv;
-        this.cijena = cijena;
+    public Artikal(String podaci) {
+        String[] lista = podaci.split(",");
+        this.sifra = lista[0];
+        this.naziv = lista[1];
+        this.cijena = Double.parseDouble(lista[2]);
     }
 
     public String getSifra() {
@@ -19,7 +22,7 @@ public class Artikal {
     }
 
     public void setSifra(String sifra) {
-        if(sifra.isEmpty()) throw IllegalArgumentException("Nije unesena sifra!");
+        if(sifra.isEmpty()) throw new IllegalArgumentException("Nije unesena sifra!");
         this.sifra = sifra;
     }
 
@@ -28,16 +31,16 @@ public class Artikal {
     }
 
     public void setNaziv(String naziv) {
-        if(naziv.isEmpty()) throw IllegalArgumentException("Prazan naziv!");
+        if(naziv.isEmpty()) throw new IllegalArgumentException("Prazan naziv!");
         this.naziv = naziv;
     }
 
-    public String getCijena() {
+    public Double getCijena() {
         return cijena;
     }
 
-    public void setCijena(String cijena) {
-        if(cijena<=0) throw IllegalArgumentException("Cijena mora biti veca od 0");
+    public void setCijena(Double cijena) {
+        if(cijena<=0) throw new IllegalArgumentException("Cijena mora biti veca od 0");
         this.cijena = cijena;
     }
 
