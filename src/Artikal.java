@@ -10,11 +10,29 @@ public class Artikal {
     public Artikal() {
     }
 
-    public Artikal(String podaci) {
-        String[] lista = podaci.split(",");
-        this.sifra = lista[0];
-        this.naziv = lista[1];
-        this.cijena = Double.parseDouble(lista[2]);
+    public Artikal(String ulaz) {
+        String[] lista = ulaz.split(",");
+
+        setSifra(lista[0]);
+        setNaziv(lista[1]);
+        setCijena(Double.parseDouble(lista[2]));
+    }
+
+    public static ArrayList<Artikal> izbaciDuplikate(ArrayList<Artikal> lista) {
+        for (int i=0; i < lista.size(); i++) {
+            for (int j=0; j < lista.size(); j++) {
+                if(lista.get(i).equals(lista.get(j)))
+                    lista.remove(j);
+            }
+        }
+
+        return lista;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Artikal a = (Artikal) obj;
+        return getNaziv().equals(a.getNaziv()) && getSifra().equals(a.getSifra()) && getCijena()==a.getCijena();
     }
 
     public String getSifra() {
@@ -22,7 +40,7 @@ public class Artikal {
     }
 
     public void setSifra(String sifra) {
-        if(sifra.isEmpty()) throw new IllegalArgumentException("Nije unesena sifra!");
+        if(sifra.isEmpty() || sifra==null) throw new IllegalArgumentException("Nije unesena sifra!");
         this.sifra = sifra;
     }
 
