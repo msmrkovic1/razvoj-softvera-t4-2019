@@ -12,15 +12,15 @@ public class Controller {
     public Button dodajArtikle;
 
     private ArrayList<sample.Artikal> artikli = new ArrayList<>();
-
     public void dodajArtikle(ActionEvent actionEvent){
+        System.out.println("Cao");
         String[] artiklStr = unos.getText().split("\n");
 
         for(String linija: artiklStr) {
-            artikli.add(new sample.Artikal(linija));
+            artikli.add(new Artikal(linija));
         }
 
-        artikli=sample.Artikal.izbaciDuplikate(artikli);
+        Artikal.izbaciDuplikate(artikli);
 
         String res = "";
 
@@ -30,5 +30,4 @@ public class Controller {
 
         rezultat.setText(res);
     }
-
 }
