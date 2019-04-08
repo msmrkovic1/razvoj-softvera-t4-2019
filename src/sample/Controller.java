@@ -31,6 +31,4 @@ public class Controller {
         rezultat.setText(res);
     }
 
-
-
 }
